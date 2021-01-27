@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# WRITTEN BY JAKE CHERRY FEB 2019
+# use awk to interleave fasta file in place
+
+if [ ! -p /dev/stdin ]; then
+	echo "This program reads from standard input.  Put it in a pipe!" >&2
+	exit 1
+fi
+
+awk '$1 ~ /^>/ {print $0} $1 !~ /^>/ { i = 0; while(i+1) { print substr($0, (1 + 60*i), 60); i++; if(length(substr($0,(1+60*i),60)) == 0) { i = -1 } } }'

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# WRITTEN BY JAKE CHERRY FEB 2019
+# uninterleaves file in pipe
+
+if [ ! -p /dev/stdin ]; then
+        echo "This program reads from standard input.  Put it in a pipe!" >&2
+        exit 1
+fi
+
+awk 'NR==1{print $0; next} $1 ~ /^>/ {print "\n" $0} $1 !~ /^>/ {printf $0} END{printf "\n"}'
