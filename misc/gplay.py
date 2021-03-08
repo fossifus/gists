@@ -1,3 +1,5 @@
+# Script I used to scrape my tracks from the now-defunct Google Play Music.  Youtube killed the radio star :(
+
 #!python3
 # run w/ /path/to/python3 gplay.py using python >3.5
 
