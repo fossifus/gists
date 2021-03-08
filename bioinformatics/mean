@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# WRITTEN BY JAKE CHERRY NOV 2017
+
+if [ ! -p /dev/stdin ]; then
+	echo "This program reads from standard input.  Put it in a pipe!" >&2
+	exit 1
+fi
+
+awk '{ total += $1 } END { print total/NR }'
